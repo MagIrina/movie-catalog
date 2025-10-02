@@ -1,0 +1,20 @@
+<section class="movie-list" aria-label="Каталог фильмов">
+  <div class="container">
+    <div *ngIf="(error$ | async) as err" class="movie-list__error" role="alert">
+      {{ err }}
+    </div>
+    <div *ngIf="(loading$ | async)" class="movie-list__loading">Загрузка...</div>
+    <ul class="movie-list__grid" *ngIf="(filtered$ | async) as movies">
+      <li *ngFor="let movie of movies; trackBy: trackById" class="movie-list__item">
+        <app-movie-card [movie]="movie" (click)="openDetail(movie)"></app-movie-card>
+      </li>
+    </ul>
+    <app-movie-detail
+      *ngIf="(selected$ | async) as movie"
+      [movie]="movie"
+      (close)="closeDetail()">
+    </app-movie-detail>
+  </div>
+</section>
+
+

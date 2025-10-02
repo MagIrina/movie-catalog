@@ -1,0 +1,99 @@
+header {
+  background: #0f1720;
+  padding: 15px 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .container {
+    .header-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      .header-navbar-title {
+        display: inline-block; /* важно для transform */
+        font-size: 28px;
+        font-weight: 700;
+        text-decoration: none;
+        background: linear-gradient(90deg, #f6e58d 0%, #7bd389 40%, #7b61ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        transition: transform 220ms ease, filter 220ms ease;
+        transform-origin: left center;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+          transform: translateY(-1px) scale(1.08);
+          filter: drop-shadow(0 6px 12px rgba(34, 34, 34, 0.45));
+        }
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .form-control {
+          min-width: 220px;
+          padding: 8px 12px;
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 8px;
+          background: rgba(255,255,255,0.03);
+          color: #fff;
+          transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+
+          &::placeholder {
+            color: rgba(255,255,255,0.5);
+          }
+
+          &:focus {
+            outline: none;
+            border-color: #f6e58d;
+            box-shadow: 0 6px 18px rgba(246,229,141,0.08);
+            background: rgba(255,255,255,0.04);
+          }
+        }
+
+        button {
+          padding: 8px 14px;
+          border-radius: 8px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 180ms ease, color 180ms ease, transform 120ms ease;
+
+          &.btn-outline-light,
+          &.btn-outline-warning {
+            border: 2px solid rgba(255,255,255,0.14);
+            color: #7b61ff;
+            background: transparent;
+            &:hover { background:  #f6e58d 40%; }
+          }
+
+          &.btn-outline-warning {
+            &:hover { background: #e3ad1e; }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  #header-navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+    .header-navbar-title {
+      width: 150px;
+    }
+  }
+}

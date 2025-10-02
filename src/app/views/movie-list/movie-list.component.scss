@@ -1,0 +1,44 @@
+.movie-list {
+  margin-top: 20px;
+
+  &__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 18px;
+  }
+
+  &__item {
+    display: block;
+    animation: fadeUp 5s ease forwards;
+    opacity: 0;
+  }
+
+  &__loading {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    padding: 15px;
+  }
+
+  &__error {
+    color: #761c19;
+    background: #ffecec;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

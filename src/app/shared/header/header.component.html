@@ -1,0 +1,19 @@
+<header>
+  <div class="container">
+    <nav class="header-navbar" id="header-navbar">
+      <a class="header-navbar-title wow animate__animated animate__fadeInLeft" (click)="onClear()">
+        Каталог фильмов
+      </a>
+      <form class="wow animate__animated animate__fadeInRight" role="search" aria-label="Поиск фильмов" (submit)="$event.preventDefault()">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="query"
+          (ngModelChange)="onInput($event)"
+          name="search"
+          placeholder="Поиск фильма..." />
+        <button *ngIf="query" type="button" class="btn btn-outline-warning ms-2" (click)="onClear()">Сбросить</button>
+      </form>
+    </nav>
+  </div>
+</header>

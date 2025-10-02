@@ -1,0 +1,75 @@
+.movie-card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 2px 6px rgba(20,20,30,0.04);
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 340px;
+  box-sizing: border-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    padding: 2px;
+    background: linear-gradient(270deg, #ffdd00, #ff6ec7, #5a00ff, #00c3ff, #ffdd00);
+    background-size: 400% 400%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+    animation: borderGradient 6s linear infinite;
+  }
+
+  &__poster {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    background: #f0f2f4;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  &__year {
+    font-size: 13px;
+    color: #666;
+  }
+}
+
+@keyframes borderGradient {
+  0%   { background-position: 0 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+

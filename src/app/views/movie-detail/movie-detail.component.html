@@ -1,0 +1,28 @@
+<div class="overlay" (click)="onClose()">
+  <section class="detail" (click)="$event.stopPropagation()" [@popup]>
+    <button class="detail__close" (click)="onClose()" aria-label="Закрыть">✕</button>
+    <div class="detail__body" id="detail-body">
+      <div class="detail__poster" *ngIf="movie">
+        <!--        вариант через сервер-->
+        <!--        <img [src]="movie?.posterServe" [alt]="movie?.title" loading="lazy" />-->
+        <!--        вариант локально-->
+        <!--        <img [src]="'posters/' + movie?.poster" alt="{{ movie?.title }}" loading="lazy"/>-->
+
+        <img [src]="'assets/posters/' + movie!.poster ? 'assets/posters/' + movie!.poster : movie!.posterServe"
+             loading="lazy"/>
+      </div>
+      <div class="detail__info">
+        <h2>{{ movie?.title }}</h2>
+        <p class="muted">{{ movie?.year }}</p>
+        <div class="detail__genres">
+          <span *ngFor="let genre of movie?.genres" class="genre">{{ genre }}</span>
+        </div>
+        <p class="detail__desc">{{ movie?.description }}</p>
+      </div>
+    </div>
+    <div class="detail__rating">
+      <p>⭐⭐⭐</p>
+      <p class="rating-info">{{ movie?.rating ?? '—' }}</p>
+    </div>
+  </section>
+</div>
